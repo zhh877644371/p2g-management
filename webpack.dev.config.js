@@ -19,8 +19,8 @@ const devConfig = {
     },
     module: {
         rules: [{
-            test: /\.(css|scss)$/,
-            use: ["style-loader", "css-loader", "postcss-loader"]
+            test: /\.css$/,
+            use: ["style-loader", "css-loader?modules&localIdentName=[local]-[hash:base64:5]", "postcss-loader"]
         }]
     },
     plugins: [
@@ -29,6 +29,7 @@ const devConfig = {
         })
     ],
     devServer: {
+        port: 8080,
         contentBase: path.join(__dirname, './dist'),
         historyApiFallback: true,
         host: '0.0.0.0',

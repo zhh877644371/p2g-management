@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 
-import './Page1.css';
+import style from './Page1.css';
 
 import image from './images/zhejinwang.jpg';
 
 export default class Page1 extends Component {
     render() {
         return (
-            <div className="page-box">
+            <div className={style.box}>
                 this is page1~
-                <br />
-                <img src= {image}/>
+                <br/>
+                <img src={image}/>
             </div>
         )
     }
