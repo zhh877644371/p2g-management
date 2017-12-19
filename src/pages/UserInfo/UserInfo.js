@@ -2,14 +2,12 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getUserInfo} from "actions/userInfo";
 
-import style from './UserInfo.css';
-
 class UserInfo extends Component {
 
     render() {
         const {userInfo, isLoading, errorMsg} = this.props.userInfo;
         return (
-            <div className={style.box}>
+            <div>
                 {
                     isLoading ? '请求信息中......' :
                         (

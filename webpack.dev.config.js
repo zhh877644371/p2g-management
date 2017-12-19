@@ -20,8 +20,18 @@ const devConfig = {
     module: {
         rules: [{
             test: /\.css$/,
+            exclude:[/node_modules/],
             use: ["style-loader", "css-loader?modules&localIdentName=[local]-[hash:base64:5]", "postcss-loader"]
-        }]
+        },
+        {
+            test: /\.css$/,
+            exclude:[/src/],
+            use: ["style-loader", "css-loader", "postcss-loader"]
+        },
+        {
+			test: /\.less$/,
+			use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
+		}]
     },
     plugins: [
         new webpack.DefinePlugin({

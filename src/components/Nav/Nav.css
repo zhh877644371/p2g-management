@@ -1,0 +1,15 @@
+.page-box {
+    border: 1px solid rgb(87, 80, 80);
+}
+.page-header {
+    position: absolute;
+    top: 0;
+    height: 50px;
+    width: 100%;
+    font-size: 18px;
+    padding: 0 20px;
+    line-height: 50px;
+    background-color: #297ebb;
+    color: #fff;
+}
+  
