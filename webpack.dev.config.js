@@ -34,15 +34,18 @@ const devConfig = {
 		}]
     },
     plugins: [
-        new webpack.DefinePlugin({
-            MOCK: true
-        })
+        // new webpack.DefinePlugin({
+        //     MOCK: true
+        // })
     ],
     devServer: {
         port: 8080,
         contentBase: path.join(__dirname, './dist'),
         historyApiFallback: true,
         host: '0.0.0.0',
+        proxy: {
+            "/api/*": "http://localhost:8090/$1"
+        }
     }
 };
 
