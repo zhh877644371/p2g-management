@@ -1,7 +1,9 @@
-.page-box {
-    border: 1px solid rgb(87, 80, 80);
+.main {
+    height: 100px;
+    padding-top: 50px;
 }
-.page-header {
+ 
+.header {
     position: absolute;
     top: 0;
     height: 50px;
@@ -9,7 +11,21 @@
     font-size: 18px;
     padding: 0 20px;
     line-height: 50px;
-    background-color: #297ebb;
+    background-color: #343a46;
     color: #fff;
+}
+
+.menu {
+    height: 100%;
+    width: 240px;
+    float: left;
+    background-color: #404040;
+}
+
+.content {
+    padding: 12px;
+    overflow: auto;
+    margin-left: 240px;
+    align-self: stretch;
 }
   

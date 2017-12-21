@@ -1,60 +1,103 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, Icon } from 'antd';
-import './Nav.css';
+import style from './Nav.css';
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
 export default class Nav extends Component {
-    handleClick = (e) => {
-        console.log('click ', e);
-    }
     render() {
+        // const {children} = this.props;
         return (
             <div>
-                <header>
-                    <Link to="/">Hello,react!</Link>
+                <header className={style.header}>
+                    <Link to="/">P2G管理端系统</Link>
                 </header>
-                <Menu
-                    onClick={this.handleClick}
-                    style={{ width: 256 }}
-                    defaultSelectedKeys={['1']}
-                    defaultOpenKeys={['sub1']}
-                    mode="vertical">
-                    <SubMenu key="sub1" title={<span><Icon type="mail" /><span>Navigation One</span></span>}>
-                        <MenuItemGroup key="g1" title="Item 1">
-                            <Menu.Item key="1"><Link to="/page1">Page1</Link></Menu.Item>
-                            <Menu.Item key="2"><Link to="/counter">Counter</Link></Menu.Item>
-                        </MenuItemGroup>
-                        <MenuItemGroup key="g2" title="Item 2">
-                            <Menu.Item key="3"><Link to="/userinfo">UserInfo</Link></Menu.Item>
-                            <Menu.Item key="4"><Link to="/tabletest">TableTest</Link></Menu.Item>
-                        </MenuItemGroup>
-                    </SubMenu>
-                    <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>Navigation Two</span></span>}>
-                        <Menu.Item key="5">Option 5</Menu.Item>
-                        <Menu.Item key="6">Option 6</Menu.Item>
-                        <SubMenu key="sub3" title="Submenu">
-                            <Menu.Item key="7">Option 7</Menu.Item>
-                            <Menu.Item key="8">Option 8</Menu.Item>
-                        </SubMenu>
-                    </SubMenu>
-                    <SubMenu key="sub4" title={<span><Icon type="setting" /><span>Navigation Three</span></span>}>
-                        <Menu.Item key="9">Option 9</Menu.Item>
-                        <Menu.Item key="10">Option 10</Menu.Item>
-                        <Menu.Item key="11">Option 11</Menu.Item>
-                        <Menu.Item key="12">Option 12</Menu.Item>
-                    </SubMenu>
-                </Menu>
+                <main className={style.main}>
+                    <div>
+                        <Menu mode="horizontal" theme="light" >
+                            <SubMenu key="overview" title={<span><Icon type="pie-chart" /><span>概览</span></span>}>
+                                <Menu.Item key="overview1">
+                                    <Link to="/page1">Page1</Link>
+                                </Menu.Item>
+                                <Menu.Item key="overview2">
+                                    <Link to="/counter">Counter</Link>
+                                </Menu.Item>
+                                <Menu.Item key="overview3">
+                                    <Link to="/userinfo">UserInfo</Link>
+                                </Menu.Item>
+                                <Menu.Item key="overview4">
+                                    <Link to="/tabletest">TableTest</Link>
+                                </Menu.Item>
+                            </SubMenu>
+
+                            <SubMenu key="adminManage" title={<span><Icon type="team" /><span>管理员账户管理</span></span>}>
+                                <Menu.Item key="admin-list">
+                                    管理员账户列表
+                                </Menu.Item>
+                                <Menu.Item key="admin-add">
+                                    新建管理员账户
+                                </Menu.Item>
+                            </SubMenu>
+
+                            <SubMenu key="govManage" title={<span><Icon type="solution" /><span>政府账户管理</span></span>}>
+                                <Menu.Item key="gov-list">
+                                    政府账户列表
+                                </Menu.Item>
+                                <Menu.Item key="gov-add">
+                                    新建政府账户
+                                </Menu.Item>
+                            </SubMenu>
+
+                            <SubMenu key="userManage" title={<span><Icon type="user" /><span>投资用户管理</span></span>}>
+                                <Menu.Item key="user-list">
+                                    用户列表
+                                </Menu.Item>
+                            </SubMenu>
+
+                            <SubMenu key="projectManage" title={<span><Icon type="cloud" /><span>融资项目管理</span></span>}>
+                                <Menu.Item key="gov-information">
+                                    政府信息
+                                </Menu.Item>
+                                <Menu.Item key="project-check">
+                                    项目审核
+                                </Menu.Item>
+                                <Menu.Item key="product-check">
+                                    产品审核
+                                </Menu.Item>
+                                <Menu.Item key="release-manage">
+                                    发布管理
+                                </Menu.Item>
+                                <Menu.Item key="overdue-manage">
+                                    逾期管理
+                                </Menu.Item>
+                            </SubMenu>
+
+                            <SubMenu key="newsManage" title={<span><Icon type="message" /><span>新闻管理</span></span>}>
+                                <Menu.Item key="news-list">
+                                    新闻列表
+                                </Menu.Item>
+                                <Menu.Item key="news-add">
+                                    新建新闻
+                                </Menu.Item>
+                            </SubMenu>
+
+                            <SubMenu key="sysNoticeManage" title={<span><Icon type="bell" /><span>系统公告管理</span></span>}>
+                                <Menu.Item key="sys-notice-list">
+                                    系统公告列表
+                                </Menu.Item>
+                                <Menu.Item key="sys-notice-add">
+                                    新建系统公告
+                                </Menu.Item>
+                            </SubMenu>
+                        </Menu>
+                    </div>
+                    {/* <div className={style.content}>
+                        {children}
+                    </div> */}
+                </main>
             </div>
-            // <ul>
-            //     <li><Link to="/">首页</Link></li>
-            //     <li><Link to="/page1">Page1</Link></li>
-            //     <li><Link to="/counter">Counter</Link></li>
-            //     <li><Link to="/userinfo">UserInfo</Link></li>
-            //     <li><Link to="/tabletest">TableTest</Link></li>
-            // </ul>
         )
     }
 }
