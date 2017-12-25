@@ -34,61 +34,61 @@ export default class Nav extends Component {
 
                             <SubMenu key="adminManage" title={<span><Icon type="team" /><span>管理员账户管理</span></span>}>
                                 <Menu.Item key="admin-list">
-                                    管理员账户列表
+                                    <Link to="/adminList">管理员用户列表</Link>
                                 </Menu.Item>
                                 <Menu.Item key="admin-add">
-                                    新建管理员账户
+                                    <Link to="/adminAdd">新建管理员账户</Link>
                                 </Menu.Item>
                             </SubMenu>
 
                             <SubMenu key="govManage" title={<span><Icon type="solution" /><span>政府账户管理</span></span>}>
                                 <Menu.Item key="gov-list">
-                                    政府账户列表
+                                    <Link to="/govList">政府账户列表</Link>
                                 </Menu.Item>
                                 <Menu.Item key="gov-add">
-                                    新建政府账户
+                                    <Link to="/govAdd">新建政府账户</Link>
                                 </Menu.Item>
                             </SubMenu>
 
                             <SubMenu key="userManage" title={<span><Icon type="user" /><span>投资用户管理</span></span>}>
                                 <Menu.Item key="user-list">
-                                    用户列表
+                                    <Link to="/userList">用户列表</Link>
                                 </Menu.Item>
                             </SubMenu>
 
                             <SubMenu key="projectManage" title={<span><Icon type="cloud" /><span>融资项目管理</span></span>}>
                                 <Menu.Item key="gov-information">
-                                    政府信息
+                                    <Link to="/govInformation">政府信息</Link>
                                 </Menu.Item>
                                 <Menu.Item key="project-check">
-                                    项目审核
+                                    <Link to="/projectCheck">项目审核</Link>
                                 </Menu.Item>
                                 <Menu.Item key="product-check">
-                                    产品审核
+                                    <Link to="/productCheck">产品审核</Link>
                                 </Menu.Item>
                                 <Menu.Item key="release-manage">
-                                    发布管理
+                                    <Link to="/releaseManage">发布管理</Link>
                                 </Menu.Item>
                                 <Menu.Item key="overdue-manage">
-                                    逾期管理
+                                    <Link to="/overdueManage">逾期管理</Link>
                                 </Menu.Item>
                             </SubMenu>
 
                             <SubMenu key="newsManage" title={<span><Icon type="message" /><span>新闻管理</span></span>}>
                                 <Menu.Item key="news-list">
-                                    新闻列表
+                                    <Link to="/newsList">新闻列表</Link>
                                 </Menu.Item>
                                 <Menu.Item key="news-add">
-                                    新建新闻
+                                    <Link to="/newsAdd">新建新闻</Link>
                                 </Menu.Item>
                             </SubMenu>
 
                             <SubMenu key="sysNoticeManage" title={<span><Icon type="bell" /><span>系统公告管理</span></span>}>
                                 <Menu.Item key="sys-notice-list">
-                                    系统公告列表
+                                    <Link to="/sysNoticeList">系统公告列表</Link>
                                 </Menu.Item>
                                 <Menu.Item key="sys-notice-add">
-                                    新建系统公告
+                                    <Link to="/sysNoticeAdd">新建系统公告</Link>
                                 </Menu.Item>
                             </SubMenu>
                         </Menu>
