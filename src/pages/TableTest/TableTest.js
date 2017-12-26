@@ -56,21 +56,13 @@ export default class DataPicker extends Component {
     //     // const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
     // }
 
-    // // onChange(date, dateString) {
-    // //     console.log(date, dateString);
-    // // }
+    // onChange(date, dateString) {
+    //     console.log(date, dateString);
+    // }
 
     render() {
         return (
             <div>
-                {/* Hello,React! */}
-                {/* <DatePicker onChange={onChange} />
-                <br />
-                <MonthPicker onChange={onChange} placeholder="Select month" />
-                <br />
-                <RangePicker onChange={onChange} />
-                <br />
-                <WeekPicker onChange={onChange} placeholder="Select week" /> */}
                 <Table columns={columns} dataSource={data} />
             </div>
         )
