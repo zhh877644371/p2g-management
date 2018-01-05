@@ -25,7 +25,7 @@ import newsList from 'bundle-loader?lazy&name=newsList!pages/newsManage/newsList
 import newsAdd from 'bundle-loader?lazy&name=newsAdd!pages/newsManage/newsAdd';
 import sysNoticeList from 'bundle-loader?lazy&name=sysNoticeList!pages/sysNoticeManage/sysNoticeList';
 import sysNoticeAdd from 'bundle-loader?lazy&name=sysNoticeAdd!pages/sysNoticeManage/sysNoticeAdd';
-import test from 'bundle-loader?lazy&name=test!pages/test/test';
+
 
 const createComponent = (component) => () => (
     <Bundle load={component}>
@@ -57,7 +57,6 @@ export default () => (
             <Route path="/newsAdd" component={createComponent(newsAdd)} />
             <Route path="/sysNoticeList" component={createComponent(sysNoticeList)} />
             <Route path="/sysNoticeAdd" component={createComponent(sysNoticeAdd)} />
-            <Route path="/test" component={createComponent(test)} />
             <Route component={createComponent(NotFound)} />
         </Switch>
     </div>
