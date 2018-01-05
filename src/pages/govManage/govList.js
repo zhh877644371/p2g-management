@@ -59,7 +59,7 @@ export default class adminList extends Component {
     componentDidMount() {
         axios({
             method: 'get',
-            url: 'api1/gov_basic/list?token=d86d5e59fcd318ff0760cb08a1dffc5002fffff20ab8c2c35198fdc947f4321071e182ef591b0cce316b4ad0526f48578eb775e49acf3f46dcc222cd1027a4360d4f23f91e43792d11caa7d5eaf6b663943518151804aaf5132646b548905566',
+            url: '/v1/gov_basic/list?token=d86d5e59fcd318ff0760cb08a1dffc5002fffff20ab8c2c35198fdc947f4321071e182ef591b0cce316b4ad0526f48578eb775e49acf3f46dcc222cd1027a4360d4f23f91e43792d11caa7d5eaf6b663943518151804aaf5132646b548905566',
         }).then(function (response) {
             console.log('111', response);
             if (response.status == 200) {
