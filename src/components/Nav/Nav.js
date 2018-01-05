@@ -30,6 +30,9 @@ export default class Nav extends Component {
                                 <Menu.Item key="overview4">
                                     <Link to="/tabletest">TableTest</Link>
                                 </Menu.Item>
+                                <Menu.Item key="test">
+                                    <Link to="/test">test</Link>
+                                </Menu.Item>
                             </SubMenu>
 
                             <SubMenu key="adminManage" title={<span><Icon type="team" /><span>管理员账户管理</span></span>}>

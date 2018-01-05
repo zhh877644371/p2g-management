@@ -20,18 +20,18 @@ const devConfig = {
     module: {
         rules: [{
             test: /\.css$/,
-            exclude:[/node_modules/],
+            exclude: [/node_modules/],
             use: ["style-loader", "css-loader?modules&localIdentName=[local]-[hash:base64:5]", "postcss-loader"]
         },
         {
             test: /\.css$/,
-            exclude:[/src/],
+            exclude: [/src/],
             use: ["style-loader", "css-loader", "postcss-loader"]
         },
         {
-			test: /\.less$/,
-			use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
-		}]
+            test: /\.less$/,
+            use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
+        }]
     },
     plugins: [
         // new webpack.DefinePlugin({
@@ -45,6 +45,7 @@ const devConfig = {
         host: '0.0.0.0',
         proxy: {
             "/api/*": "http://localhost:8090/$1",
+<<<<<<< HEAD
             '/v1': {
                 target: 'http://localhost:8080/p2g',
                 secure:false,
@@ -53,6 +54,10 @@ const devConfig = {
                     '^/v1': '/v1'
                 }
             }
+=======
+            "/api1/*": "http://localhost:8080/p2g/v1/$1"
+
+>>>>>>> lyl
         }
     }
 };
