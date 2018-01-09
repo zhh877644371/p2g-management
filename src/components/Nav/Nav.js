@@ -1,18 +1,41 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, Icon } from 'antd';
+import { Menu, Icon, Button} from 'antd';
 import style from './Nav.css';
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
 export default class Nav extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            loginVisible: false,
+            isLogin: false,
+            userName: '',
+        };
+        this.showLoginModal = this.showLoginModal.bind(this);
+    }
+    componentDidMount(){
+        if(window.localStorage.getItem('user')) {
+            this.setState({
+                userName: window.localStorage.getItem('user'),
+                isLogin: true,
+            });
+        }
+    }
+    showLoginModal(){
+        this.setState({
+            loginVisible: true,
+        });
+    }
     render() {
         // const {children} = this.props;
         return (
             <div>
                 <header className={style.header}>
                     <Link to="/">P2G管理端系统</Link>
+                    <Button type="primary" onClick={this.showLoginModal}>登录</Button>
                 </header>
                 <main className={style.main}>
                     <div>

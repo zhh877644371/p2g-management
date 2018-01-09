@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export default class adminList extends Component {
+export default class adminAdd extends Component {
     render() {
         return (
             <div>

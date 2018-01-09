@@ -4,31 +4,32 @@ import axios from 'axios';
 import 'antd/dist/antd.css';
 
 const columns = [{
-    title: 'Account',
-    dataIndex: 'account',
-    key: 'account',
+    title: '账户名称',
+    dataIndex: 'account.accountName',
+    key: 'accountName',
     render: text => <a href="#">{text}</a>,
   }, {
-    title: 'Name',
-    dataIndex: 'name',
+    title: '机构名称',
+    dataIndex: 'institution',
+    key: 'institution',
+  }, {
+    title: '办公地点',
+    dataIndex: 'officeAddress',
+    key: 'officeAddress',
+  }, {
+    title: '联系人',
+    dataIndex: 'contact.name',
     key: 'name',
   }, {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  }, {
-    title: 'Person',
-    dataIndex: 'person',
-    key: 'person',
-  }, {
-    title: 'Telephone',
-    dataIndex: 'telephone',
+    title: '联系电话',
+    dataIndex: 'contact.telephone',
     key: 'telephone',
   }, {
-    title: 'Email',
-    dataIndex: 'email',
+    title: '联系人邮箱',
+    dataIndex: 'contact.email',
     key: 'email',
-  },];
+  },
+];
   
 //   const data = [{
 //     key: '1',
@@ -48,7 +49,7 @@ const columns = [{
 //     email: 'xxx@xx.xx',
 //   }];
 
-export default class adminList extends Component {
+export default class govList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -57,13 +58,14 @@ export default class adminList extends Component {
     }
 
     componentDidMount() {
+        var this1 = this;
         axios({
             method: 'get',
             url: '/v1/gov_basic/list?token=d86d5e59fcd318ff0760cb08a1dffc5002fffff20ab8c2c35198fdc947f4321071e182ef591b0cce316b4ad0526f48578eb775e49acf3f46dcc222cd1027a4360d4f23f91e43792d11caa7d5eaf6b663943518151804aaf5132646b548905566',
         }).then(function (response) {
             console.log('111', response);
             if (response.status == 200) {
-                self.setState({
+                this1.setState({
                     govAccount: response.data.data,
                 });
             }
