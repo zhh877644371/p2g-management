@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, Icon, Button} from 'antd';
+import { Menu, Icon, Button, Modal, Input, message, Tag } from 'antd';
 import style from './Nav.css';
+import qs from 'qs';
+import axios from 'axios';
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
@@ -11,31 +13,98 @@ export default class Nav extends Component {
         super(props);
         this.state = {
             loginVisible: false,
+            loading: false,
             isLogin: false,
-            userName: '',
+            accountName: '',
+            token: '',
         };
         this.showLoginModal = this.showLoginModal.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
+        this.handleLoginCan = this.handleLoginCan.bind(this);
     }
-    componentDidMount(){
-        if(window.localStorage.getItem('user')) {
+    componentDidMount() {
+        if (window.sessionStorage.getItem('accountName')) {
             this.setState({
-                userName: window.localStorage.getItem('user'),
+                accountName: window.sessionStorage.getItem('accountName'),
                 isLogin: true,
             });
         }
     }
-    showLoginModal(){
+    showLoginModal() {
         this.setState({
             loginVisible: true,
         });
     }
+    handleLogin() {
+        //console.log(document.getElementsByClassName("input-param")[0].value);
+        var this1 = this;
+        if (document.getElementsByClassName("input-param")[0].value === '' || document.getElementsByClassName("input-param")[1].value === '') {
+            message.info("用户名或密码为空！");
+        }
+        else {
+            axios.post('v1/admin/login', qs.stringify({
+                accountName: document.getElementsByClassName("input-param")[0].value,
+                password: document.getElementsByClassName("input-param")[1].value,
+            })).then(function (response) {
+                if (response.data.code === 0) {
+                    console.log('1', response.data);
+                    message.success("登录成功！");
+                    window.sessionStorage.setItem('accountName', document.getElementsByClassName("input-param")[0].value);//利用session储存用户名
+                    window.sessionStorage.setItem("token", response.data.data.token);//利用session储存token
+                    window.location.href = window.location.origin;
+                    this1.setState({
+                        loginVisible: false,
+                    })
+                    console.log('111', response.data.data.token);
+                }
+                else if (response.data.code === 9003) {
+                    message.warning("账户不存在！");
+                }
+                else if (response.data.code === 9006) {
+                    message.error("密码错误！");
+                }
+                else if (response.data.code === 9007) {
+                    message.warning("错误次数超过限制！");
+                }
+                else {
+                    message.warning("该账户处于锁定状态！");
+                }
+            }).catch(function (err) {
+                console.log(err);
+                console.log('222');
+            });
+        }
+    }
+    handleLoginCan() {
+        this.setState({
+            loginVisible: false,
+        });
+    }
+    handleClick() {
+        window.sessionStorage.removeItem('accountName');
+        window.sessionStorage.removeItem('token');
+        window.location.href = window.location.origin;
+    }
+
     render() {
         // const {children} = this.props;
         return (
             <div>
                 <header className={style.header}>
                     <Link to="/">P2G管理端系统</Link>
-                    <Button type="primary" onClick={this.showLoginModal}>登录</Button>
+                    {this.state.isLogin ?
+                        <span className={style.text}>
+                            <Tag>Hello,{window.sessionStorage.getItem('accountName')}</Tag>
+                            <Button type="primary" onClick={this.handleClick}>注销</Button>
+                        </span>
+                        :
+                        <span className={style.text}>
+                            <Button type="primary" onClick={this.showLoginModal}>登录</Button>
+                        </span>}
+                    <Modal title="登录" visible={this.state.loginVisible} onOk={this.handleLogin} onCancel={this.handleLoginCan} okText="登录" cancelText="取消">
+                        <div className="userInfo"><label> 账户名:</label> <Input className="input-param" /></div>
+                        <div className="userInfo"><label> 密码：</label> <Input className="input-param" type="password" /></div>
+                    </Modal>
                 </header>
                 <main className={style.main}>
                     <div>
@@ -116,9 +185,6 @@ export default class Nav extends Component {
                             </SubMenu>
                         </Menu>
                     </div>
-                    {/* <div className={style.content}>
-                        {children}
-                    </div> */}
                 </main>
             </div>
         )

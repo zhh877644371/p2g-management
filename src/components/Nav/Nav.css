@@ -29,4 +29,9 @@
     align-self: stretch;
 }
 
+.text{
+    display: block;
+    float:right;
+}
+
 
