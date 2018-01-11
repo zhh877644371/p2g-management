@@ -3,41 +3,39 @@ import { Table, Icon, Divider } from 'antd';
 import axios from 'axios';
 import 'antd/dist/antd.css';
 
-const columns = [{
-    title: '账户名称',
-    dataIndex: 'account.accountName',
-    key: 'accountName',
-    render: text => <a href="#">{text}</a>,
-}, {
-    title: '机构名称',
-    dataIndex: 'institution',
-    key: 'institution',
-}, {
-    title: '办公地点',
-    dataIndex: 'officeAddress',
-    key: 'officeAddress',
-}, {
-    title: '联系人',
-    dataIndex: 'contact.name',
-    key: 'name',
-}, {
-    title: '联系电话',
-    dataIndex: 'contact.telephone',
-    key: 'telephone',
-}, {
-    title: '联系人邮箱',
-    dataIndex: 'contact.email',
-    key: 'email',
-},
-];
-
-
 export default class govList extends Component {
     constructor(props) {
         super(props);
         this.state = {
             govAccount: [],
         };
+        this.columns = [{
+            title: '账户名称',
+            dataIndex: 'account.accountName',
+            key: 'accountName',
+            render: text => <a href="#">{text}</a>,
+        }, {
+            title: '机构名称',
+            dataIndex: 'institution',
+            key: 'institution',
+        }, {
+            title: '办公地点',
+            dataIndex: 'officeAddress',
+            key: 'officeAddress',
+        }, {
+            title: '联系人',
+            dataIndex: 'contact.name',
+            key: 'name',
+        }, {
+            title: '联系电话',
+            dataIndex: 'contact.telephone',
+            key: 'telephone',
+        }, {
+            title: '联系人邮箱',
+            dataIndex: 'contact.email',
+            key: 'email',
+        },
+        ];
     }
 
     componentDidMount() {
@@ -63,7 +61,7 @@ export default class govList extends Component {
     render() {
         return (
             <div>
-                <Table columns={columns} dataSource={this.state.govAccount} />
+                <Table columns={this.columns} dataSource={this.state.govAccount} />
             </div>
         );
     }
