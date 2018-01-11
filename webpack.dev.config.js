@@ -45,7 +45,6 @@ const devConfig = {
         host: '0.0.0.0',
         proxy: {
             "/api/*": "http://localhost:8090/$1",
-<<<<<<< HEAD
             '/v1': {
                 target: 'http://localhost:8080/p2g',
                 secure:false,
@@ -54,10 +53,7 @@ const devConfig = {
                     '^/v1': '/v1'
                 }
             }
-=======
-            "/api1/*": "http://localhost:8080/p2g/v1/$1"
 
->>>>>>> lyl
         }
     }
 };
