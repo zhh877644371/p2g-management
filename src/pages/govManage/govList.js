@@ -42,7 +42,7 @@ export default class govList extends Component {
         var this1 = this;
         axios({
             method: 'get',
-            url: '/v1/gov_basic/list?token=' + window.sessionStorage.getItem('token'),
+            url: '/v1/gov_basic/list?token=' + window.localStorage.getItem('token'),
         }).then(function (response) {
             console.log('111', response);
             if (response.data.code === 0) {
